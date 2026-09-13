@@ -1,80 +1,349 @@
-.text-off {
-  color: #D9D9D9;
+/* ---------- File explorer sidebar ---------- */
+
+.profile-sidebar {
+    position: sticky;
+    top: 1rem;
+}
+
+.file-explorer {
+    padding: 0 .85rem;
+}
+
+.file-explorer-title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: 0 0 .75rem;
+    padding: 0 .35rem .65rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.file-explorer-title::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    flex: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1.75 3.75c0-.55.45-1 1-1h2.69c.27 0 .52.11.71.29l.85.85c.19.18.44.29.7.29h4.85c.55 0 1 .45 1 1v6.07c0 .55-.45 1-1 1H2.75c-.55 0-1-.45-1-1z' fill='%23475569'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* ---------- Base tree reset ---------- */
+
+.tree,
+.tree ul {
+    list-style: none;
 }
 
 .tree {
-    --spacing: 1.5rem;
+    --spacing: 1.4rem;
     --radius: 10px;
-  }
-  
-  .tree li {
+    margin: 0;
+    padding: 0;
+    font-size: 13.5px;
+}
+
+.tree li {
     display: block;
     position: relative;
     padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
-  }
-  
-  .tree ul {
+}
+
+.tree ul {
     margin-left: calc(var(--radius) - var(--spacing));
     padding-left: 0;
-  }
-  
-  .tree ul li {
-    border-left: 2px solid #ddd;
+}
 
-  }
-  
-  .tree ul li:last-child {
+.tree ul li {
+    border-left: 1px dashed #d8dee9;
+}
+
+.tree ul li:last-child {
     border-color: transparent;
-  }
-  
-  .tree ul li::before {
+}
+
+.tree ul li::before {
     content: '';
     display: block;
     position: absolute;
     top: calc(var(--spacing) / -2);
-    left: -2px;
-    width: calc(var(--spacing) + 2px);
+    left: -1px;
+    width: calc(var(--spacing) + 1px);
     height: calc(var(--spacing) + 1px);
-    border: solid #ddd;
-    border-width: 0 0 2px 2px;
-  }
-  
-  .tree summary {
-    display: block;
+    border: dashed #d8dee9;
+    border-width: 0 0 1px 1px;
+}
+
+/* ---------- Rows: summary (folders) + a (files) ---------- */
+
+.tree summary,
+.tree a {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .32rem .5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tree summary {
     cursor: pointer;
-  }
-  
-  .tree summary::marker,
-  .tree summary::-webkit-details-marker {
+    user-select: none;
+}
+
+.tree summary::marker,
+.tree summary::-webkit-details-marker {
     display: none;
-  }
-  
-  .tree summary:focus {
+}
+
+.tree summary:focus {
     outline: none;
-  }
-  
-  .tree summary:focus-visible {
-    outline: 1px dotted #000;
-  }
-  
-  .tree li::after,
-  .tree summary::before {
+}
+
+.tree summary:focus-visible,
+.tree a:focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: -2px;
+}
+
+.tree summary:hover {
+    background: #f1f5f9;
+}
+
+/* chevron, pure CSS triangle that rotates on open */
+.tree summary::before {
     content: '';
-    display: block;
-    position: absolute;
-    top: calc(var(--spacing) / 2 - var(--radius));
-    left: calc(var(--spacing) - var(--radius) - 1px);
-    width: calc(2 * var(--radius));
-    height: calc(2 * var(--radius));
+    flex: none;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 5px;
+    border-color: transparent transparent transparent #94a3b8;
+    transition: transform .15s ease;
+}
+
+.tree details[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+/* folder icon */
+.tree summary::after {
+    content: '';
+    flex: none;
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1.75 3.75c0-.55.45-1 1-1h2.69c.27 0 .52.11.71.29l.85.85c.19.18.44.29.7.29h4.85c.55 0 1 .45 1 1v6.07c0 .55-.45 1-1 1H2.75c-.55 0-1-.45-1-1z' fill='%23475569'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* file icon, used for every <a> tree entry */
+.tree a::before {
+    content: '';
+    flex: none;
+    width: 13px;
+    height: 13px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.25 1.5h4.5l2.5 2.5v9.5a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1z' fill='none' stroke='%2364748b' stroke-width='1.3' stroke-linejoin='round'/%3E%3Cpath d='M8.5 1.5v2.75h2.75' fill='none' stroke='%2364748b' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* ---------- Labels & states ---------- */
+
+.text-sorme {
+    color: #334155;
+    font-weight: 600;
+}
+
+/* clickable file, not the active one */
+a.text-off {
+    color: #475569;
+}
+
+a.text-off:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+/* inert row: raw file name with no route behind it */
+.tree > li.text-off {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .32rem .5rem;
+    color: #cbd5e1;
+    cursor: default;
+}
+
+.tree > li.text-off::before {
+    content: '';
+    flex: none;
+    width: 13px;
+    height: 13px;
+    opacity: .6;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.25 1.5h4.5l2.5 2.5v9.5a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1z' fill='none' stroke='%23cbd5e1' stroke-width='1.3' stroke-linejoin='round'/%3E%3Cpath d='M8.5 1.5v2.75h2.75' fill='none' stroke='%23cbd5e1' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* currently open file */
+.tree a.text-info {
+    color: #4338ca;
+    font-weight: 700;
+    background: #eef2ff;
+}
+
+.tree a.text-info:hover {
+    background: #e0e7ff;
+}
+
+/* ---------- Page base ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 50px 20px;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #1e293b;
+}
+
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 22px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    border-radius: 999px;
+    background: #e0e7ff;
+    color: #4338ca;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.description {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* ---------- Code card ---------- */
+
+.code-card {
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    background: #1e1e1e;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    direction: ltr;
+    padding: 12px 16px;
+    background: #18181b;
+    border-bottom: 1px solid #2f2f2f;
+}
+
+.file-name {
+    color: #d4d4d4;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+}
+
+.dots {
+    display: flex;
+    gap: 7px;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
-    background: #ddd;
-  }
-  
-  .tree summary::before {
-    z-index: 1;
-    background: #525381 url('../icon/expand-collapse.svg') 0 0;
-  }
-  
-  .tree details[open] > summary::before {
-    background-position: calc(-2 * var(--radius)) 0;
-  }
+    background: #666;
+}
+
+.dot.red {
+    background: #ff5f56;
+}
+
+.dot.yellow {
+    background: #ffbd2e;
+}
+
+.dot.green {
+    background: #27c93f;
+}
+
+.footer {
+    margin-top: 12px;
+    color: #94a3b8;
+    font-size: 12px;
+    text-align: left;
+    direction: ltr;
+}
+
+/* ---------- Prism.js overrides ---------- */
+
+pre[class*="language-"] {
+    direction: ltr;
+    text-align: left;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    padding: 24px !important;
+    font-size: 15px;
+    line-height: 1.8;
+    min-height: 280px;
+}
+
+code[class*="language-"] {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+.token.comment {
+    color: #7f8c98 !important;
+    font-style: italic;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+    body {
+        padding: 25px 12px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    pre[class*="language-"] {
+        font-size: 13px;
+        padding: 18px !important;
+    }
+}

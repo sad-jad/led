@@ -1,6 +1,14 @@
 <?php
 
+use App\Http\Controllers\BoardController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
+
+Route::resource('boards', BoardController::class)->except('show');
+Route::resource('projects', ProjectController::class)->except('show');
+Route::get('projects/{project}/boards/search', [ProjectController::class, 'searchBoards'])->name('projects.boards.search');
+Route::post('projects/{project}/boards/{board}', [ProjectController::class, 'attachBoard'])->name('projects.boards.attach');
+Route::delete('projects/{project}/boards/{board}', [ProjectController::class, 'detachBoard'])->name('projects.boards.detach');
 
 Route::prefix('core')->group(function () {
     Route::prefix('inc')->group(function () {
