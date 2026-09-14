@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Image extends Model
 {
-    const TYPE_FEATURED = 0;
-
     protected $fillable = [
         'typable_id',
         'typable_type',

@@ -1,6 +1,10 @@
-@extends('layout.app')
+@extends('layout.project.master')
 
 @section('title', 'ویرایش پروژه')
+
+@section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 
 @section('content')
     <h1 class="h4 mb-3">ویرایش پروژه</h1>
@@ -44,7 +48,7 @@
     <p id="no-boards-message" class="text-muted @if ($project->boards->isNotEmpty()) d-none @endif">هنوز هیچ بردی به این پروژه اضافه نشده است.</p>
 @endsection
 
-@section('scripts')
+@section('script')
 <script>
 (function () {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;

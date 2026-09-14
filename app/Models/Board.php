@@ -29,8 +29,8 @@ class Board extends Model
         return $this->morphMany(Image::class, 'typable');
     }
 
-    public function featuredImage(): ?Image
+    public function icon(): ?Image
     {
-        return $this->images->firstWhere('type', Image::TYPE_FEATURED);
+        return $this->images->firstWhere('type', 0)->path;
     }
 }
