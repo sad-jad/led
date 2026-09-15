@@ -51,9 +51,9 @@
                         </div>
                     </div>
                 </a>
-                <ul class="submenu p-0 {{ request()->is('projects*') ? 'has-submenu' : 'collapse' }}">
-                    <li class="{{ request()->is('projects*') ? 'active-link' : '' }}">
-                        <a class="nav-link py-2 pe-4" href="{{ url('projects') }}">پروژه</a>
+                <ul class="submenu p-0 {{ request()->is('project*') ? 'has-submenu' : 'collapse' }}">
+                    <li class="{{ request()->is('project*') ? 'active-link' : '' }}">
+                        <a class="nav-link py-2 pe-4" href="{{ url('project') }}">پروژه</a>
                     </li>
                 </ul>
             </li>
@@ -71,12 +71,12 @@
                         </div>
                     </div>
                 </a>
-                <ul class="submenu p-0 {{ request()->is('micros*') || request()->is('boards*') ? 'has-submenu' : 'collapse' }}">
-                    <li class="{{ request()->is('micros*') ? 'active-link' : '' }}">
-                        <a class="nav-link py-2 pe-4" href="{{ url('micros') }}">میکرو</a>
+                <ul class="submenu p-0 {{ request()->is('micro*') || request()->is('board*') ? 'has-submenu' : 'collapse' }}">
+                    <li class="{{ request()->is('micro*') ? 'active-link' : '' }}">
+                        <a class="nav-link py-2 pe-4" href="{{ url('micro') }}">میکرو</a>
                     </li>
-                    <li class="{{ request()->is('boards*') ? 'active-link' : '' }}">
-                        <a class="nav-link py-2 pe-4" href="{{ url('boards') }}">برد</a>
+                    <li class="{{ request()->is('board*') ? 'active-link' : '' }}">
+                        <a class="nav-link py-2 pe-4" href="{{ url('board') }}">برد</a>
                     </li>
                 </ul>
             </li>

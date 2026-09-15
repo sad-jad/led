@@ -7,16 +7,11 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
-    public function projects(): HasMany
-    {
-    return $this->hasMany(Project::class);
-    }
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +23,22 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    //عکس
+    public function imgs()
+    {
+        return $this->morphMany(Img::class, 'typable');
+    }
+
+    public function icon()
+    {
+        return $this->imgs->firstWhere('type', Img::TYPE_ICON);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

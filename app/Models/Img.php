@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Img extends Model
 {
+    const TYPE_ICON = 'icon';
+
     protected $fillable = [
         'typable_id',
         'typable_type',
@@ -14,7 +15,7 @@ class Img extends Model
         'path',
     ];
 
-    public function typable(): MorphTo
+    public function typable()
     {
         return $this->morphTo();
     }

@@ -5,13 +5,13 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h4 mb-0">پروژه‌ها</h1>
-        <a href="{{ route('projects.create') }}" class="btn btn-primary">پروژه جدید</a>
+        <a href="{{ route('project.create') }}" class="btn btn-primary">پروژه جدید</a>
     </div>
     <div class="row border-end pe-4 me-3">
         @foreach($projects as $project)
             <a href="#" class="row border rounded-3 mt-4 align-items-center text-black link-item-pishnevis py-2 py-md-0">
                 <div class="col-md-1 text-center m-0 p-0">
-                    <img src="{{url('assets/icon/list/avatar.svg')}}" width="58" height="59" />
+                    <img src="{{ $project->user->icon() ? url($project->user->icon()->path) : url('assets/icon/list/avatar.svg') }}" width="58" />
                 </div>
                 <div class="col-md-11">
                     <div class="row border-bottom pt-3 pb-2">
@@ -51,8 +51,8 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->boards_count }}</td>
                     <td class="text-end">
-                        <a href="{{ route('projects.edit', $project) }}" class="btn btn-sm btn-outline-secondary">ویرایش</a>
-                        <form action="{{ route('projects.destroy', $project) }}" method="POST" class="d-inline" onsubmit="return confirm('حذف این پروژه؟')">
+                        <a href="{{ route('project.edit', $project) }}" class="btn btn-sm btn-outline-secondary">ویرایش</a>
+                        <form action="{{ route('project.destroy', $project) }}" method="POST" class="d-inline" onsubmit="return confirm('حذف این پروژه؟')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-outline-danger">حذف</button>

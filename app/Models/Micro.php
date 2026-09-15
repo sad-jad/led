@@ -3,16 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Micro extends Model
 {
     protected $fillable = [
         'name',
+        'type',
     ];
 
-    public function boards(): HasMany
+    public function boards()
     {
         return $this->hasMany(Board::class);
+    }
+
+    //عکس
+    public function imgs()
+    {
+        return $this->morphMany(Img::class, 'typable');
+    }
+
+    public function icon()
+    {
+        return $this->imgs->firstWhere('type', Img::TYPE_ICON);
     }
 }

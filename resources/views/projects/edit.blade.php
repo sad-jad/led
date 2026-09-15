@@ -8,7 +8,7 @@
 
 @section('content')
     <h1 class="h4 mb-3">ویرایش پروژه</h1>
-    <form action="{{ route('projects.update', $project) }}" method="POST" class="col-lg-6 mb-4">
+    <form action="{{ route('project.update', $project) }}" method="POST" class="col-lg-6 mb-4">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -30,7 +30,7 @@
         @foreach ($project->boards as $board)
             <div class="col" data-board-id="{{ $board->id }}">
                 <div class="card h-100">
-                    @php($image = $board->images->firstWhere('type', 0))
+                    @php($image = $board->icon())
                     <img src="{{ $image ? Storage::url($image->path) : 'https://placehold.co/200x140?text=' . urlencode($board->name) }}"
                          class="card-img-top" style="height: 120px; object-fit: cover;" alt="{{ $board->name }}">
                     <div class="card-body p-2">
@@ -48,9 +48,9 @@
 <script>
 (function () {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-    const searchUrl = @json(route('projects.boards.search', $project));
-    const attachUrlTemplate = @json(route('projects.boards.attach', [$project, '__BOARD__']));
-    const detachUrlTemplate = @json(route('projects.boards.detach', [$project, '__BOARD__']));
+    const searchUrl = @json(route('project.board.search', $project));
+    const attachUrlTemplate = @json(route('project.board.attach', [$project, '__BOARD__']));
+    const detachUrlTemplate = @json(route('project.board.detach', [$project, '__BOARD__']));
 
     const searchInput = document.getElementById('board-search');
     const searchResults = document.getElementById('search-results');

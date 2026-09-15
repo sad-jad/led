@@ -1,14 +1,16 @@
 <?php
 
 use App\Http\Controllers\BoardController;
+use App\Http\Controllers\MicroController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('boards', BoardController::class)->except('show');
-Route::resource('projects', ProjectController::class)->except('show');
-Route::get('projects/{project}/boards/search', [ProjectController::class, 'searchBoards'])->name('projects.boards.search');
-Route::post('projects/{project}/boards/{board}', [ProjectController::class, 'attachBoard'])->name('projects.boards.attach');
-Route::delete('projects/{project}/boards/{board}', [ProjectController::class, 'detachBoard'])->name('projects.boards.detach');
+Route::resource('board', BoardController::class)->except('show');
+Route::resource('micro', MicroController::class)->except('show');
+Route::resource('project', ProjectController::class)->except('show');
+Route::get('project/{project}/board/search', [ProjectController::class, 'searchBoards'])->name('project.board.search');
+Route::post('project/{project}/board/{board}', [ProjectController::class, 'attachBoard'])->name('project.board.attach');
+Route::delete('project/{project}/board/{board}', [ProjectController::class, 'detachBoard'])->name('project.board.detach');
 
 Route::prefix('core')->group(function () {
     Route::prefix('inc')->group(function () {

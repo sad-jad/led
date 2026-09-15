@@ -21,13 +21,35 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //کاربر‌ها
-        $users = ['سجاد پیله‌ور' => 'zohancity@gmail.com', 'دانیال فرزین' => 'danial.farzin101@gmail.com', 'محمدپویا ابراهیم‌آبادی' => 'amirpouya8513@gmail.com'];
-        foreach($users as $name => $email){
-            User::create([
-                'name' => $name,
-                'email' => $email,
+        $users = [
+            [
+                'name' => 'سجاد پیله‌ور',
+                'email' => 'zohancity@gmail.com',
+                'src' => 'assets/img/user/sad-jad.png',
+            ],
+            [
+                'name' => 'دانیال فرزین',
+                'email' => 'danial.farzin101@gmail.com',
+            ],
+            [
+                'name' => 'محمدپویا ابراهیم‌آبادی',
+                'email' => 'amirpouya8513@gmail.com',
+            ]
+        ];
+        foreach($users as $user){
+            $createdUser = User::create([
+                'name' => $user['name'],
+                'email' => $user['email'],
                 'password' => Hash::make('password'),
             ]);
+            if(isset($user['src'])) {
+                Img::create([
+                    'typable_id' => $createdUser->id,
+                    'typable_type' => User::class,
+                    'type' => Img::TYPE_ICON,
+                    'path' => $user['src'],
+                ]);
+            }
         }
 
         //پروژه‌ها
@@ -53,29 +75,37 @@ class DatabaseSeeder extends Seeder
             Img::create([
                 'typable_id' => $createdMicro->id,
                 'typable_type' => Micro::class,
-                'type' => 'icon',
+                'type' => Img::TYPE_ICON,
                 'path' => $src,
             ]);
         }
 
         //برد‌ها
         $boards = [
-            'bluepill' => 'assets/img/board/bluepill_stm32.png',
-            'nucleo-f466re' => 'assets/img/board/nucleo-f466re_stm32.png',
+            [
+                'name' => 'bluepill',
+                'micro' => 'stm32f103c8',
+                'src' => 'assets/img/board/bluepill_stm32.png',
+            ],
+            [
+                'name' => 'nucleo-f446re',
+                'micro' => 'stm32f446re',
+                'src' => 'assets/img/board/nucleo-f446re.jpg',
+            ],
         ];
-        foreach($boards as $name => $src){
-            $findedMicro = Micro::where('name', $name)->first();
+        foreach($boards as $board){
+            $findedMicro = Micro::where('name', $board['micro'])->first();
             if(isset($findedMicro)){
                 $createdBoard = Board::create([
-                    'name' => $name,
+                    'name' => $board['name'],
                     'type' => 'main',
-                    'micro_id' => $src,
+                    'micro_id' => $findedMicro->id,
                 ]);
                 Img::create([
                     'typable_id' => $createdBoard->id,
                     'typable_type' => Board::class,
-                    'type' => 'icon',
-                    'path' => $src,
+                    'type' => Img::TYPE_ICON,
+                    'path' => $board['src'],
                 ]);
             }
         }

@@ -1,4 +1,18 @@
 @php($board = $board ?? null)
+@php($micros = $micros ?? collect())
+
+<div class="mb-3">
+    <label for="micro_id" class="form-label">میکروکنترلر</label>
+    <select name="micro_id" id="micro_id" class="form-select @error('micro_id') is-invalid @enderror" required>
+        <option value="">انتخاب کنید</option>
+        @foreach ($micros as $micro)
+            <option value="{{ $micro->id }}" @selected((int) old('micro_id', $board?->micro_id) === $micro->id)>{{ $micro->name }}</option>
+        @endforeach
+    </select>
+    @error('micro_id')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
 
 <div class="mb-3">
     <label for="name" class="form-label">نام برد</label>
@@ -25,7 +39,7 @@
     @error('image')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
-    @if ($board?->featuredImage())
-        <img src="{{ Storage::url($board->featuredImage()->path) }}" alt="{{ $board->name }}" class="mt-2" style="max-height: 120px;">
+    @if ($board?->icon())
+        <img width="100" src="{{ $board->icon() ? url($board->icon()->path) : url('assets/img/board/default.png') }}"
     @endif
 </div>

@@ -10,10 +10,11 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('projects.index') }}">مدیریت پروژه</a>
+            <a class="navbar-brand" href="{{ route('project.index') }}">مدیریت پروژه</a>
             <div class="navbar-nav">
-                <a class="nav-link {{ request()->routeIs('projects.*') ? 'active' : '' }}" href="{{ route('projects.index') }}">پروژه‌ها</a>
-                <a class="nav-link {{ request()->routeIs('boards.*') ? 'active' : '' }}" href="{{ route('boards.index') }}">بردها</a>
+                <a class="nav-link {{ request()->routeIs('project.*') ? 'active' : '' }}" href="{{ route('project.index') }}">پروژه‌ها</a>
+                <a class="nav-link {{ request()->routeIs('board.*') ? 'active' : '' }}" href="{{ route('board.index') }}">بردها</a>
+                <a class="nav-link {{ request()->routeIs('micro.*') ? 'active' : '' }}" href="{{ route('micro.index') }}">میکروها</a>
             </div>
         </div>
     </nav>

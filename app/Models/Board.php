@@ -3,34 +3,33 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Board extends Model
 {
     protected $fillable = [
         'name',
         'type',
+        'micro_id',
     ];
 
-    public function micro(): BelongsTo
+    public function micro()
     {
         return $this->belongsTo(Micro::class);
     }
 
-    public function projects(): BelongsToMany
+    public function projects()
     {
         return $this->belongsToMany(Project::class);
     }
 
-    public function images(): MorphMany
+    //عکس
+    public function imgs()
     {
-        return $this->morphMany(Image::class, 'typable');
+        return $this->morphMany(Img::class, 'typable');
     }
 
-    public function icon(): ?Image
+    public function icon()
     {
-        return $this->images->firstWhere('type', 0)->path;
+        return $this->imgs->firstWhere('type', Img::TYPE_ICON);
     }
 }

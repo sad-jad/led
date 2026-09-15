@@ -33,12 +33,12 @@ class ProjectController extends Controller
             'user_id' => auth()->id() ?? User::first()?->id ?? User::factory()->create()->id,
         ]);
 
-        return redirect()->route('projects.edit', $project)->with('status', 'پروژه ایجاد شد. حالا می‌توانید بردها را اضافه کنید.');
+        return redirect()->route('project.edit', $project)->with('alert-success', 'پروژه ایجاد شد. حالا می‌توانید بردها را اضافه کنید.');
     }
 
     public function edit(Project $project)
     {
-        $project->load('boards.images');
+        $project->load('boards.imgs');
 
         return view('projects.edit', compact('project'));
     }
@@ -51,14 +51,14 @@ class ProjectController extends Controller
 
         $project->update($validated);
 
-        return redirect()->route('projects.index')->with('status', 'پروژه ویرایش شد.');
+        return redirect()->route('project.index')->with('alert-success', 'پروژه ویرایش شد.');
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect()->route('projects.index')->with('status', 'پروژه حذف شد.');
+        return redirect()->route('project.index')->with('alert-success', 'پروژه حذف شد.');
     }
 
     public function searchBoards(Project $project, Request $request)
@@ -66,7 +66,7 @@ class ProjectController extends Controller
         $query = trim((string) $request->query('q'));
         $attachedIds = $project->boards()->pluck('boards.id');
 
-        $boards = Board::with('images')
+        $boards = Board::with('imgs')
             ->whereNotIn('id', $attachedIds)
             ->when($query !== '', fn ($q) => $q->where('name', 'like', "%{$query}%"))
             ->orderBy('name')
@@ -77,7 +77,7 @@ class ProjectController extends Controller
             'id' => $board->id,
             'name' => $board->name,
             'type' => $board->type,
-            'image_url' => $board->featuredImage() ? Storage::url($board->featuredImage()->path) : null,
+            'image_url' => $board->icon() ? Storage::url($board->icon()->path) : null,
         ]));
     }
 
@@ -89,7 +89,7 @@ class ProjectController extends Controller
             'id' => $board->id,
             'name' => $board->name,
             'type' => $board->type,
-            'image_url' => $board->featuredImage() ? Storage::url($board->featuredImage()->path) : null,
+            'image_url' => $board->icon() ? Storage::url($board->icon()->path) : null,
         ]);
     }
 
