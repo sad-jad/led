@@ -34,6 +34,10 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'محمدپویا ابراهیم‌آبادی',
                 'email' => 'amirpouya8513@gmail.com',
+            ],
+            [
+                'name' => 'محمد حمیدیان‌فر',
+                'email' => 'mohammdhamidianfar@gmail.com',
             ]
         ];
         foreach($users as $user){
@@ -53,7 +57,7 @@ class DatabaseSeeder extends Seeder
         }
 
         //پروژه‌ها
-        $projects = ['حضور غیاب'];
+        $projects = ['حضور غیاب', 'سیم‌کارت'];
         foreach($projects as $title){
             Project::create([
                 'user_id' => 1,

@@ -7,36 +7,44 @@
         <h1 class="h4 mb-0">پروژه‌ها</h1>
         <a href="{{ route('project.create') }}" class="btn btn-primary">پروژه جدید</a>
     </div>
-    <div class="row border-end pe-4 me-3">
-        @foreach($projects as $project)
-            <a href="#" class="row border rounded-3 mt-4 align-items-center text-black link-item-pishnevis py-2 py-md-0">
-                <div class="col-md-1 text-center m-0 p-0">
-                    <img src="{{ $project->user->icon() ? url($project->user->icon()->path) : url('assets/icon/list/avatar.svg') }}" width="58" />
+
+    @foreach($projects as $project)
+        <div class="row border rounded-2 align-items-center mt-3 m-0 p-3">
+        <div class="col-md-7">
+                <div>
+                    <h6 class="fw-bold text-sorme">{{$project->title}}</h6>
+                    <span class="d-flex">
+                        <img src="{{url('assets/icon/list/request.svg')}}" width="15" height="14" />
+                        <span class="text-gray fs-12">{{ $project->user->name }}</span>
+                    </span>
                 </div>
-                <div class="col-md-11">
-                    <div class="row border-bottom pt-3 pb-2">
-                        <div class="col-md-7 d-flex justify-content-between">
-                            <h6 class="fw-bold m-0">{{$project->title}}</h6>
+            </div>
+            <div class="col-md-5">
+                <div class="d-flex justify-content-end align-items-center mt-3 mt-md-0">
+                    @foreach($project->boards as $board)
+                        <div class="users-contracts d-flex justify-content-center ">
+                            @php($boardIcon = $board->icon())
+                            <img class="rounded-5" width="28"  src="{{ $boardIcon ? url($boardIcon->path) : url('assets/img/board/default.png') }}" alt="img">
+                            <div class="hover-user shadow rounded-3 p-3">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        @php($microIcon = $board->micro->icon())
+                                        <img class="rounded-3" width="60" height="60" src="{{ $microIcon ? url($microIcon->path) : url('assets/img/micro/default.png') }}">
+                                    </div>
+                                    <div class="me-3">
+                                        <h6 class="fw-bold">{{$board->name}}</h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-5 d-flex justify-content-md-end">
-                            <p class="m-0">تعداد برد‌ها:</p>
-                            <span class="text-red-number me-2">مقدار نمایش یک</span>
-                        </div>
-                    </div>
-                    <div class="row py-2">
-                        <div class="col-md-6 d-flex">
-                            <h6 class="m-0">عنوان نمایش دو:</h6>
-                            <span class="text-red-number me-2">مقدار نمایش دو</span>
-                        </div>
-                        <div class="col-md-6 d-flex justify-content-md-end">
-                            <p class="m-0">عنوان نمایش سه:</p>
-                            <span class="text-red-number me-2">مقدار نمایش سه</span>
-                        </div>
-                    </div>
+                    @endforeach
+                    <a href="{{ route('project.edit', $project) }}" class=" d-block me-5">
+                        <img src="{{url('assets/library/shadonic/icons/left-arrow.svg')}}" width="16" height="20" />
+                    </a>
                 </div>
-            </a>
-        @endforeach
-    </div>
+            </div>
+        </div>
+    @endforeach
     <table class="table bg-white">
         <thead>
             <tr>
