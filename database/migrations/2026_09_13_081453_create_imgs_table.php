@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('imgs', function (Blueprint $table) {
             $table->id();
             $table->morphs('typable');
-            $table->unsignedTinyInteger('type')->default(0);
+            $table->string('type')->nullable();
             $table->string('path');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('imgs');
     }
 };

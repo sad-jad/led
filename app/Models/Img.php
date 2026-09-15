@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Image extends Model
+class Img extends Model
 {
     protected $fillable = [
         'typable_id',

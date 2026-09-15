@@ -8,7 +8,6 @@
 
 @section('content')
     <h1 class="h4 mb-3">ویرایش پروژه</h1>
-
     <form action="{{ route('projects.update', $project) }}" method="POST" class="col-lg-6 mb-4">
         @csrf
         @method('PUT')
@@ -22,13 +21,10 @@
         </div>
         <button type="submit" class="btn btn-primary">ذخیره عنوان</button>
     </form>
-
     <hr>
-
     <h2 class="h5 mt-4 mb-3">افزودن برد به پروژه</h2>
     <input type="text" id="board-search" class="form-control mb-3" placeholder="نام برد را جستجو کنید...">
     <div id="search-results" class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3 mb-5"></div>
-
     <h2 class="h5 mb-3">بردهای این پروژه</h2>
     <div id="attached-boards" class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3">
         @foreach ($project->boards as $board)

@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-between align-items-center px-3">
             <div class="d-flex align-items-center">
                 <div class="profile-img">
-                    <img width="60" 
+                    <img width="60"
                     src="{{ Auth::user()->avatar ?? url('assets/library/shadonic/icons/no.jpg') }}">
                 </div>
                 <div class="me-3">
@@ -52,11 +52,8 @@
                     </div>
                 </a>
                 <ul class="submenu p-0 {{ request()->is('projects*') ? 'has-submenu' : 'collapse' }}">
-                    <li class="{{ request()->is('projects/create') ? 'active-link' : '' }}">
-                        <a class="nav-link py-2 pe-4" href="{{ url('projects/create') }}">ایجاد پروژه</a>
-                    </li>
-                    <li class="{{ request()->is('projects') ? 'active-link' : '' }}">
-                        <a class="nav-link py-2 pe-4" href="{{ url('projects') }}">همه پروژه‌ها</a>
+                    <li class="{{ request()->is('projects*') ? 'active-link' : '' }}">
+                        <a class="nav-link py-2 pe-4" href="{{ url('projects') }}">پروژه</a>
                     </li>
                 </ul>
             </li>
@@ -68,18 +65,18 @@
                                 <img src="{{ url('assets/icons/micro.svg') }}" width="23" height="23" />
                             </span>
                             <div class="d-flex justify-content-between w-100 align-items-center">
-                                <span class="me-2 fs-14">میکرو</span>
+                                <span class="me-2 fs-14">میکرو و برد</span>
                                     <img src="{{ url('assets/library/shadonic/icons/arrow.svg') }}" width="20" height="16" />
                             </div>
                         </div>
                     </div>
                 </a>
-                <ul class="submenu p-0 {{ request()->is('micros*') ? 'has-submenu' : 'collapse' }}">
-                    <li class="{{ request()->is('micros/create') ? 'active-link' : '' }}">
-                        <a class="nav-link py-2 pe-4" href="{{ url('micros/create') }}">ایجاد میکرو</a>
+                <ul class="submenu p-0 {{ request()->is('micros*') || request()->is('boards*') ? 'has-submenu' : 'collapse' }}">
+                    <li class="{{ request()->is('micros*') ? 'active-link' : '' }}">
+                        <a class="nav-link py-2 pe-4" href="{{ url('micros') }}">میکرو</a>
                     </li>
-                    <li class="{{ request()->is('micros') ? 'active-link' : '' }}">
-                        <a class="nav-link py-2 pe-4" href="{{ url('micros') }}">همه میکرو‌ها</a>
+                    <li class="{{ request()->is('boards*') ? 'active-link' : '' }}">
+                        <a class="nav-link py-2 pe-4" href="{{ url('boards') }}">برد</a>
                     </li>
                 </ul>
             </li>

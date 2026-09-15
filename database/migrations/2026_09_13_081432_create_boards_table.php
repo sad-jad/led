@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('micro_id')->constrained('micros')->onDelete('cascade');
             $table->string('name')->unique();
             $table->string('type');
             $table->timestamps();

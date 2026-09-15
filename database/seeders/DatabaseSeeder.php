@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Project;
+use App\Models\Micro;
 use App\Models\Board;
+use App\Models\Img;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -35,25 +37,47 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
                 'title' => $title,
             ]);
-        }  
+        }
+
+
+        //میکرو
+        $micros = [
+            'stm32f103c8' => 'assets/img/micro/stm32f103c8.png',
+            'stm32f446re' => 'assets/img/micro/stm32f446re.png',
+        ];
+        foreach($micros as $name => $src){
+            $createdMicro = Micro::create([
+                'name' => $name,
+                'type' => 'main',
+            ]);
+            Img::create([
+                'typable_id' => $createdMicro->id,
+                'typable_type' => Micro::class,
+                'type' => 'icon',
+                'path' => $src,
+            ]);
+        }
 
         //برد‌ها
         $boards = [
-            [
-                'name' => 'necloy-2542' ,
-                'type' => 'main',
-                'src'  => 'assets/img/board/2542.pnggit '
-            ],
-            [],
-                        'necloy-2542' => 'main',
-            'necloy-3698' => 'main',
-            'etrnet'      => 'ext',
+            'bluepill' => 'assets/img/board/bluepill_stm32.png',
+            'nucleo-f466re' => 'assets/img/board/nucleo-f466re_stm32.png',
         ];
-        foreach($boards as $name => $type){
-            Board::create([
-                'name' => $name,
-                'type' => $type,
-            ]);
+        foreach($boards as $name => $src){
+            $findedMicro = Micro::where('name', $name)->first();
+            if(isset($findedMicro)){
+                $createdBoard = Board::create([
+                    'name' => $name,
+                    'type' => 'main',
+                    'micro_id' => $src,
+                ]);
+                Img::create([
+                    'typable_id' => $createdBoard->id,
+                    'typable_type' => Board::class,
+                    'type' => 'icon',
+                    'path' => $src,
+                ]);
+            }
         }
 
     }
