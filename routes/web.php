@@ -12,6 +12,9 @@ Route::get('project/{project}/board/search', [ProjectController::class, 'searchB
 Route::post('project/{project}/board/{board}', [ProjectController::class, 'attachBoard'])->name('project.board.attach');
 Route::delete('project/{project}/board/{board}', [ProjectController::class, 'detachBoard'])->name('project.board.detach');
 
+Route::prefix('programing')->group(function () {
+    Route::get('bluepill', function () { return view('programing.bluepill');});
+});
 Route::prefix('core')->group(function () {
     Route::prefix('inc')->group(function () {
         Route::get('main', function () { return view('core.inc.main');});

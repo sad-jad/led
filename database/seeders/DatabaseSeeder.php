@@ -92,10 +92,10 @@ class DatabaseSeeder extends Seeder
                 'src' => 'assets/img/board/bluepill_stm32.png',
                 'states' => [
                     'VBAT', 'PC13', 'PC14', 'PC15', 'PA0', 'PA1', 'PA2',  'PA3',  'PA4',  'PA5',  'PA6', 'PA7', 'PB0', 'PB1', 'PB10', 'PB11', 'NRST', 'VCC3V3-1', 'GND-1', 'GND-2',
-                    'PC12', 'PC13', 'PC14', 'PC15', 'PA8', 'PA9', 'PA10', 'PA11', 'PA12', 'PA15', 'PB3', 'PB4', 'PB5', 'PB6', 'PB7',  'PB8',  'PB9',  '5V',       'GND-3', 'VCC3v3-2',
+                    'PB12', 'PB13', 'PB14', 'PB15', 'PA8', 'PA9', 'PA10', 'PA11', 'PA12', 'PA15', 'PB3', 'PB4', 'PB5', 'PB6', 'PB7',  'PB8',  'PB9',  '5V',       'GND-3', 'VCC3v3-2',
                     'VCC3V3-3', 'SWIO', 'SWCLK', 'GND-4',
                     'BOOT0', 'BOOT1', 'BOOT0-BOOT1', 'BOOT',
-                    'MICRO-USB', 'REST'
+                    'MICRO-USB', 'RESET'
                 ]
             ],
             [
