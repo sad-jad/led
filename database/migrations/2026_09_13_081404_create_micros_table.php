@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('micros', function (Blueprint $table) {
             $table->id();
+
+            //اصلی
             $table->string('name')->unique();
             $table->string('type');
+            
             $table->timestamps();
         });
     }

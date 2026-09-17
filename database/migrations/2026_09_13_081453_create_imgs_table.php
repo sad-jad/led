@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('imgs', function (Blueprint $table) {
             $table->id();
+
+            //اصلی
             $table->morphs('typable');
-            $table->string('type')->nullable();
             $table->string('path');
+
+            //فرعی
+            $table->string('type')->nullable();
+
             $table->timestamps();
         });
     }

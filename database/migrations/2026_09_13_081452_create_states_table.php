@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('board_project', function (Blueprint $table) {
+        Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
-            $table->foreignId('board_id')->constrained('boards')->onDelete('cascade');
+
+            //اصلی
+            $table->morphs('typable');
+            $table->string('name');
+
+            //فرعی
+            $table->string('type')->nullable();
+
+            $table->unique(['typable_id', 'typable_type', 'name']);
             $table->timestamps();
         });
     }
@@ -24,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('board_project');
+        Schema::dropIfExists('states');
     }
 };
