@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MicroController;
+use App\Http\Controllers\PinController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('board', BoardController::class)->except('show');
 Route::resource('micro', MicroController::class)->except('show');
+Route::post('micro/{micro}/pins', [PinController::class, 'store'])->name('micro.pin.store');
+Route::put('micro/{micro}/pins/{pin}', [PinController::class, 'update'])->whereNumber('pin')->name('micro.pin.update');
+Route::delete('micro/{micro}/pins/{pin}', [PinController::class, 'destroy'])->whereNumber('pin')->name('micro.pin.destroy');
 Route::resource('project', ProjectController::class)->except('show');
 Route::get('project/{project}/board/search', [ProjectController::class, 'searchBoards'])->name('project.board.search');
 Route::post('project/{project}/board/{board}', [ProjectController::class, 'attachBoard'])->name('project.board.attach');

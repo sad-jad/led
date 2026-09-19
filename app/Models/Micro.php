@@ -26,4 +26,10 @@ class Micro extends Model
     {
         return $this->imgs->firstWhere('type', Img::TYPE_ICON);
     }
+
+    //پین‌ها
+    public function pins()
+    {
+        return $this->morphMany(Pin::class, 'typeable');
+    }
 }

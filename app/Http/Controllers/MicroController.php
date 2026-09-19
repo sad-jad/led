@@ -46,7 +46,7 @@ class MicroController extends Controller
 
     public function edit(Micro $micro)
     {
-        $micro->load('imgs');
+        $micro->load(['imgs', 'pins']);
 
         return view('micros.edit', compact('micro'));
     }
