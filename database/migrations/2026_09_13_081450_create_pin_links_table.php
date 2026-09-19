@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('states', function (Blueprint $table) {
+        Schema::create('pin_links', function (Blueprint $table) {
             $table->id();
 
             //اصلی
-            $table->morphs('typable');
-            $table->string('name');
+            $table->foreignId('boardable_id')->constrained('boardables')->onDelete('cascade');
+            $table->foreignId('pin_id')->constrained('pins')->onDelete('cascade');
+            $table->foreignId('love_id')->constrained('pins')->onDelete('cascade');
 
-            //فرعی
-            $table->string('type')->nullable();
-
-            $table->unique(['typable_id', 'typable_type', 'name']);
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('states');
+        Schema::dropIfExists('pin_links');
     }
 };

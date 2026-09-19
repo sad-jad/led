@@ -10526,9 +10526,9 @@ usW7Zg9hZmGl0rbYObvCzsVNha9ydPeEk4cXnEWeIs8CuYgk+0m+XL0lQK4PweoDd19fJQ9fPxYO
 p5IvvArJsMwHHl7e8PD0VrGRXd09VGYdybDj7P5WLrLcw4O/GQ/+fuQ35M7r4qvGQGY/elyQg0+K
 RGNZ8v/05+qf/hW10b8t48x7ECxSXO8PwxH4/wAlkfbv7e+guwAAAABJRU5ErkJggg==" transform="matrix(0.75 0 0 0.75 0 0)">
 </image>
-<circle id="swclk" fill="none" cx="40.43" cy="63.43" r="4.39"/>
-<circle id="gnd" fill="none" cx="40.43" cy="76.71" r="4.39"/>
-<circle id="swdio" fill="none" cx="40.43" cy="87.43" r="4.39"/>
-<circle id="swo" fill="none" cx="40.43" cy="114.57" r="4.39"/>
-<circle id="_x33_v3" fill="none" cx="53.86" cy="252.57" r="4.39"/>
+<circle id="PIN_SWCLK" cx="40.43" cy="63.43" r="4.39"/>
+<circle id="PIN_GND" cx="40.43" cy="76.71" r="4.39"/>
+<circle id="PIN_SWDIO" cx="40.43" cy="87.43" r="4.39"/>
+<circle id="PIN_SWO" cx="40.43" cy="114.57" r="4.39"/>
+<circle id="PIN_3V3" cx="53.86" cy="252.57" r="4.39"/>
 </svg>

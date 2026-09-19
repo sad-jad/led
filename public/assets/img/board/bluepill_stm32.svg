@@ -1409,44 +1409,44 @@ PbLFz5z79MTat+Tz+kdO6B5JYpVE9kD7Pt9Shm5WuMORy10Crm/J4092O89P5hGU/aU0tUM40YQd
 XPchFKA5sS3dNeGdV1L88Cn82z2v76D7TLjohyMvffaC8JVmnPUJeb0+W48U9XH98azaCc1uB7jv
 iJS/WuB24Kz99AseTcFhIPmmfYywj/gQjYr8/xNgADgVGOwuj2RFAAAAAElFTkSuQmCC" transform="matrix(1.4529 0 0 1.4529 0 0)">
 </image>
-<circle id="_x31_" fill="none" cx="1102.7" cy="64.9" r="13.3"/>
-<circle id="_x32_" fill="none" cx="1050.3" cy="64.9" r="13.3"/>
-<circle id="_x33_" fill="none" cx="998.2" cy="64.4" r="13.3"/>
-<circle id="_x33__1_" fill="none" cx="945.8" cy="64.4" r="13.3"/>
-<circle id="_x34_" fill="none" cx="893.8" cy="65.2" r="13.3"/>
-<circle id="_x35_" fill="none" cx="841.4" cy="65.2" r="13.3"/>
-<circle id="_x36_" fill="none" cx="789.3" cy="64.7" r="13.3"/>
-<circle id="_x37_" fill="none" cx="737.9" cy="64.7" r="13.3"/>
-<circle id="_x38_" fill="none" cx="686.9" cy="64.6" r="13.3"/>
-<circle id="_x39_" fill="none" cx="634.5" cy="64.6" r="13.3"/>
-<circle id="_x31_0" fill="none" cx="582.4" cy="64" r="13.3"/>
-<circle id="_x31_1" fill="none" cx="530" cy="64" r="13.3"/>
-<circle id="_x31_2" fill="none" cx="479.1" cy="64.8" r="13.3"/>
-<circle id="_x31_3" fill="none" cx="427.6" cy="64.8" r="13.3"/>
-<circle id="_x31_4" fill="none" cx="375.5" cy="64.3" r="13.3"/>
-<circle id="_x31_5" fill="none" cx="324.1" cy="64.3" r="13.3"/>
-<circle id="_x31_6" fill="none" cx="272" cy="64.3" r="13.3"/>
-<circle id="_x31_7" fill="none" cx="220.6" cy="64.3" r="13.3"/>
-<circle id="_x31_8" fill="none" cx="168.5" cy="63.8" r="13.3"/>
-<circle id="_x31_9" fill="none" cx="117.1" cy="63.8" r="13.3"/>
-<circle id="_x32_0" fill="none" cx="1099.6" cy="379.5" r="13.3"/>
-<circle id="_x32_1" fill="none" cx="1047.3" cy="379.5" r="13.3"/>
-<circle id="_x32_2" fill="none" cx="995.2" cy="379" r="13.3"/>
-<circle id="_x32_3" fill="none" cx="942.8" cy="379" r="13.3"/>
-<circle id="_x32_4" fill="none" cx="891" cy="379.8" r="13.3"/>
-<circle id="_x32_5" fill="none" cx="838.6" cy="379.8" r="13.3"/>
-<circle id="_x32_6" fill="none" cx="786.5" cy="379.3" r="13.3"/>
-<circle id="_x32_7" fill="none" cx="735.2" cy="379.3" r="13.3"/>
-<circle id="_x32_8" fill="none" cx="684.3" cy="379.1" r="13.3"/>
-<circle id="_x32_9" fill="none" cx="631.9" cy="379.1" r="13.3"/>
-<circle id="_x33_0" fill="none" cx="579.9" cy="378.6" r="13.3"/>
-<circle id="_x33_1" fill="none" cx="527.5" cy="378.6" r="13.3"/>
-<circle id="_x33_2" fill="none" cx="478.7" cy="378.4" r="13.3"/>
-<circle id="_x33_3" fill="none" cx="426.3" cy="378.4" r="13.3"/>
-<circle id="_x33_4" fill="none" cx="374.2" cy="377.9" r="13.3"/>
-<circle id="_x33_5" fill="none" cx="322.9" cy="377.9" r="13.3"/>
-<circle id="_x33_6" fill="none" cx="271.8" cy="377.9" r="13.3"/>
-<circle id="_x33_7" fill="none" cx="219.5" cy="376.9" r="13.3"/>
-<circle id="_x33_8" fill="none" cx="167.4" cy="376.4" r="13.3"/>
-<ellipse id="_x33_9" transform="matrix(7.088905e-02 -0.9975 0.9975 7.088905e-02 -266.6344 466.4565)" fill="none" cx="117.1" cy="376.4" rx="13.3" ry="13.3"/>
+<circle id="PIN_SWCLK" cx="1102.7" cy="64.9" r="13.3"/>
+<circle fill="none" cx="1050.3" cy="64.9" r="13.3"/>
+<circle fill="none" cx="998.2" cy="64.4" r="13.3"/>
+<circle fill="none" cx="945.8" cy="64.4" r="13.3"/>
+<circle fill="none" cx="893.8" cy="65.2" r="13.3"/>
+<circle fill="none" cx="841.4" cy="65.2" r="13.3"/>
+<circle fill="none" cx="789.3" cy="64.7" r="13.3"/>
+<circle fill="none" cx="737.9" cy="64.7" r="13.3"/>
+<circle fill="none" cx="686.9" cy="64.6" r="13.3"/>
+<circle fill="none" cx="634.5" cy="64.6" r="13.3"/>
+<circle id="PIN_PB3" cx="582.4" cy="64" r="13.3"/>
+<circle fill="none" cx="530" cy="64" r="13.3"/>
+<circle fill="none" cx="479.1" cy="64.8" r="13.3"/>
+<circle fill="none" cx="427.6" cy="64.8" r="13.3"/>
+<circle fill="none" cx="375.5" cy="64.3" r="13.3"/>
+<circle fill="none" cx="324.1" cy="64.3" r="13.3"/>
+<circle fill="none" cx="272" cy="64.3" r="13.3"/>
+<circle fill="none" cx="220.6" cy="64.3" r="13.3"/>
+<circle fill="none" cx="168.5" cy="63.8" r="13.3"/>
+<circle fill="none" cx="117.1" cy="63.8" r="13.3"/>
+<circle id="PIN_GND-4" fill="" cx="1099.6" cy="379.5" r="13.3"/>
+<circle fill="none" cx="1047.3" cy="379.5" r="13.3"/>
+<circle fill="none" cx="995.2" cy="379" r="13.3"/>
+<circle fill="none" cx="942.8" cy="379" r="13.3"/>
+<circle fill="none" cx="891" cy="379.8" r="13.3"/>
+<circle fill="none" cx="838.6" cy="379.8" r="13.3"/>
+<circle fill="none" cx="786.5" cy="379.3" r="13.3"/>
+<circle fill="none" cx="735.2" cy="379.3" r="13.3"/>
+<circle id="PIN_SWIO" cx="684.3" cy="379.1" r="13.3"/>
+<circle fill="none" cx="631.9" cy="379.1" r="13.3"/>
+<circle fill="none" cx="579.9" cy="378.6" r="13.3"/>
+<circle fill="none" cx="527.5" cy="378.6" r="13.3"/>
+<circle fill="none" cx="478.7" cy="378.4" r="13.3"/>
+<circle fill="none" cx="426.3" cy="378.4" r="13.3"/>
+<circle fill="none" cx="374.2" cy="377.9" r="13.3"/>
+<circle fill="none" cx="322.9" cy="377.9" r="13.3"/>
+<circle fill="none" cx="271.8" cy="377.9" r="13.3"/>
+<circle fill="none" cx="219.5" cy="376.9" r="13.3"/>
+<circle fill="none" cx="167.4" cy="376.4" r="13.3"/>
+<ellipse id="VCC3V3-3" transform="matrix(7.088905e-02 -0.9975 0.9975 7.088905e-02 -266.6344 466.4565)" fill="" cx="117.1" cy="376.4" rx="13.3" ry="13.3"/>
 </svg>
